@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6cf5299469dc04a804e2ac95fd8205, type: 3}
-  m_Name: BronzSpin
+  m_Name: BronzeSpin
   m_EditorClassIdentifier: 
   SlicesValue: 0a0000000200000001000000640000002c010000010000001900000078000000
   SlicesRewads: 0000000001000000030000000100000000000000020000000000000000000000
