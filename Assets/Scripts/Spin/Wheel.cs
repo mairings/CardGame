@@ -20,22 +20,10 @@ namespace CardGame.Spin
 
         [SerializeField]Spin _spinScript;
 
-        
-
-
         void Start()
         {
             IsSpinning = false;
             SlicesTransformsGetListing();
-        }
-
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && !IsSpinning)
-            {
-                IsSpinning = true;
-                //SpinWheel();
-            }
         }
 
         public void SpinWheel(Image spinbutton)
@@ -56,10 +44,9 @@ namespace CardGame.Spin
             Sequence spinSequence = DOTween.Sequence();
             spinSequence.Append(wheel.DOLocalRotate(new Vector3(0f, 0f, currentAngle + fullRotations * 360f), rotationTime * 0.2f));
             spinSequence.Append(wheel.DOLocalRotate(new Vector3(0f, 0f, targetAngle - sliceAngle), rotationTime * 0.3f, RotateMode.FastBeyond360)).SetEase(Ease.OutQuint);
-
             
-            RewardCard.Instance.SetCardContent(_spinScript.ContentHolesList[randomAngleIndex/* - discreaseIndex*/].GetComponent<ContentHole>().Reward.sprite,
-                   _spinScript.ContentHolesList[randomAngleIndex/* - discreaseIndex*/].GetComponent<ContentHole>().Amount.text);
+            RewardCard.Instance.SetCardContent(_spinScript.ContentHolesList[randomAngleIndex].GetComponent<ContentHole>().Reward.sprite,
+                   _spinScript.ContentHolesList[randomAngleIndex].GetComponent<ContentHole>().Amount.text);
             IsSpinning = false;
             spinSequence.OnComplete(() => {
                 spinbutton.raycastTarget = true;
