@@ -32,5 +32,5 @@ public struct Spin
 [CreateAssetMenu(fileName = "CardGame", menuName = "CardGame/Spin")]
 public class SpinDatas : ScriptableObject
 {
-    public Spin[] mySpinValues = new Spin[30];
+    public Spin[] MySpinValues = new Spin[30];
 }

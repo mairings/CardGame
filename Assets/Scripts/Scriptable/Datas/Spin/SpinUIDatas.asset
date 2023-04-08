@@ -16,11 +16,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d7983d0af64077349922ae5b3b99f432, type: 3}
   - {fileID: 21300000, guid: bb9128b18627b7247ad45b4d8d8cd1d9, type: 3}
   - {fileID: 21300000, guid: b2ebedbbd980e704b93a6d29db3f43cb, type: 3}
+  RewardSprites:
+  - {fileID: 21300000, guid: 4be276bb2f143ff4ab119a5a63c00c2d, type: 3}
+  - {fileID: 21300000, guid: 0e80b0a2df83f3d49b409e46649ccd03, type: 3}
+  - {fileID: 21300000, guid: f00149ab65acfbb43ad62c0f9eb0d268, type: 3}
+  - {fileID: 21300000, guid: 6665820b1f93d7043a87d4dd00fce3a2, type: 3}
+  - {fileID: 21300000, guid: 6067d330a48d3a7418476c0375440201, type: 3}
+  - {fileID: 21300000, guid: 9b6f408917c6ac443ad5064962d3a5e5, type: 3}
+  - {fileID: 21300000, guid: 169ef54d7c6247a40becb032f40a3e4e, type: 3}
+  - {fileID: 21300000, guid: 9c92b8c94aecd67438b67204b53b6ab2, type: 3}
+  - {fileID: 21300000, guid: f8f1087d1336a4549907f7438c96614f, type: 3}
+  - {fileID: 21300000, guid: 0acc8ff1225c840468e32f84fb8a8700, type: 3}
   IndicatorSprites:
   - {fileID: 21300000, guid: ec95ff63313b26d4a8c33a08f4370765, type: 3}
   - {fileID: 21300000, guid: d1efd5361164d3c4e810b1ee2e551bfe, type: 3}
   - {fileID: 21300000, guid: b9344a7fdc9cffa429b0ffcc0e3f3282, type: 3}
   ButtonSprites:
   - {fileID: 21300000, guid: e25c734fb74c76d419c39eedcf1e9bc0, type: 3}
-  - {fileID: 21300000, guid: f45ff60296d798e41844cd9158a415c6, type: 3}
+  - {fileID: 21300000, guid: d4319834d24b220468a8758024625214, type: 3}
   - {fileID: 21300000, guid: 2a28e273711c4104b89fb86863aa7be4, type: 3}
