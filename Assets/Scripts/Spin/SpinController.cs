@@ -1,18 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 using CardGame.Cards;
 
-namespace CardGame.Spin
+namespace CardGame.Spins
 {
-    public class Spin : Singleton<Spin>
+    public class SpinController : Singleton<SpinController>
     {
         [Header("Datas")]
         public SpinUIData SpinUIData;
         public SpinDatas SpinData;
-        SpinDatas _currentData;
         [SerializeField] RewardCard _rewardCard;
         
         [Header("List")]
@@ -20,9 +17,9 @@ namespace CardGame.Spin
         
         
         [Header("UI Elements")]
-        [SerializeField] Image _spinImg, _indicatorImg, _buttonSpinImg;
+        [SerializeField] Image _spinImg, _indicatorImg, _buttonSpinImg, _panelBackground;
 
-
+        [SerializeField] GameObject _giveUp;
         private void Start()
         {
             GetSpinDatasLevel();
@@ -34,32 +31,40 @@ namespace CardGame.Spin
             _indicatorImg.sprite = indicatorImg;
             _buttonSpinImg.sprite = buttonSpinImg;
         }
+        private void OnEnable()
+        {
+            GetSpinDatasLevel();
+        }
 
         public void GetSpinDatasLevel()
         {
             int level = PlayerPrefs.GetInt("Level");
-            print("MYLEvel"+ level);
-            if ((level+1)% 4==0)
+
+            //Sliver
+            if ((level+1)% 5==0 &&  (level+1) % 30 !=0)
             {
+                _giveUp.SetActive(true);
                 SpinContentsGet(SpinUIData.SpinSprites[1], SpinUIData.IndicatorSprites[1], SpinUIData.ButtonSprites[1]);
             }
-            else if ((level+1) % 29==0)
+            //Gold
+            else if ((level+1) % 30==0 )
             {
+                _giveUp.SetActive(true);
                 SpinContentsGet(SpinUIData.SpinSprites[2], SpinUIData.IndicatorSprites[2], SpinUIData.ButtonSprites[2]);
             }
+            //Bronze
             else
             {
+                _giveUp.SetActive(false);
                 SpinContentsGet(SpinUIData.SpinSprites[0], SpinUIData.IndicatorSprites[0], SpinUIData.ButtonSprites[0]);
             }
-
 
             for (int i = 0; i < ContentHolesList.Count; i++)
             {
                 ContentHole contentHole = ContentHolesList[i].GetComponent<ContentHole>();
 
                     contentHole.Amount.text = "x" + SpinData.MySpinValues[level].SlicesValue[i].ToString();
-
-                    switch (SpinData.MySpinValues[level].SlicesRewads[i])
+                switch (SpinData.MySpinValues[level].SlicesRewads[i])
                     {
                         case global::Spin.SliceReward.Cash:
                             contentHole.Reward.sprite = SpinUIData.RewardSprites[0];
@@ -96,10 +101,15 @@ namespace CardGame.Spin
                     
                 }
             }
-            
+
+
         }
 
-
+        public void PanelBackgroundChange(int index)
+        {
+            _panelBackground.sprite = SpinUIData.PanelBackgrounds[index];
+        }
 
     }
+
 }

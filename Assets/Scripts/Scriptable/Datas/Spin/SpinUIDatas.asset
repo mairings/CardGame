@@ -35,3 +35,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e25c734fb74c76d419c39eedcf1e9bc0, type: 3}
   - {fileID: 21300000, guid: d4319834d24b220468a8758024625214, type: 3}
   - {fileID: 21300000, guid: 2a28e273711c4104b89fb86863aa7be4, type: 3}
+  PanelBackgrounds:
+  - {fileID: 21300000, guid: 8581b6d1b10874c4ea39797d9e2234c3, type: 3}
+  - {fileID: 21300000, guid: 618f6b67f12140342bddda82e16c13da, type: 3}
+  - {fileID: 21300000, guid: 3397cea0ab789fa428bb6b031642884b, type: 3}
+  - {fileID: 21300000, guid: fed1e36f406acb04aba01f620782c901, type: 3}
