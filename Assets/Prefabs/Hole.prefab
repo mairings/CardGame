@@ -262,5 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3371c8cfa366e964bbd3b45ee93145f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: {fileID: 569480599489051828}
+  AmountTxt: {fileID: 569480599489051828}
   Reward: {fileID: 569480601172044839}
+  Amount: 0

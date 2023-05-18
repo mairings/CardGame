@@ -14,9 +14,6 @@ namespace CardGame.Spins
         public Transform WheelTransform;
         public Transform Pointer;
         [HideInInspector]public List<Transform> SliceTransforms;
-        [SerializeField] float _rotationTime = 5f;
-        [SerializeField] int _minSpinCount = 3;
-        [SerializeField] int _maxSpinCount = 6;
         public List<float> StopAngles;
         public bool IsSpinning;
         public bool IsBomb;
@@ -26,7 +23,10 @@ namespace CardGame.Spins
         [SerializeField] Counter _counterScript;
 
 
-        void Start()
+        [Header("Datas")]
+        [SerializeField] WheelData _wheelData;
+
+        private void Start()
         {
             IsSpinning = false;
             SlicesTransformsGetListing();
@@ -35,15 +35,15 @@ namespace CardGame.Spins
         // when spin wheel process
         public void SpinWheel(Image spinbutton)
         {
-            int level = PlayerPrefs.GetInt("Level")+1;
+            int level = PlayerPrefsManager.Instance.CurrentLevel+1;
 
             //Silver
-            if (level % 5 == 0 && level % 30 != 0 && level != 0)
+            if (level % _wheelData.SilverLevel == 0 && level % _wheelData.GoldLevel != 0 && level != 0)
             {
                 _spinScript.PanelBackgroundChange(3);
             }
             //Gold
-            else if (level % 30 == 0 && level != 0)
+            else if (level % _wheelData.GoldLevel == 0 && level != 0)
             {
                 _spinScript.PanelBackgroundChange(2);
             }
@@ -53,24 +53,24 @@ namespace CardGame.Spins
                 _spinScript.PanelBackgroundChange(1);
             }
 
-           //Variables for spin
-            int spinCount = Random.Range(_minSpinCount, _maxSpinCount + 1);
-            float targetAngle = spinCount * 360f;
+            //Variables for spin
+            //int spinCount = Random.Range(_wheelData.MinimumSpinCount, _wheelData.MaxSpinCount + 1);
+            float targetAngle = _wheelData.SpinCount * _wheelData.RotateAngleLimit;
             int randomAngleIndex = Random.Range(0, StopAngles.Count);
             targetAngle += StopAngles[randomAngleIndex];
             int sliceCount = SliceTransforms.Count;
-            float sliceAngle = 360f / sliceCount;
+            float sliceAngle = _wheelData.RotateAngleLimit / sliceCount;
             float currentAngle = WheelTransform.rotation.eulerAngles.z;
             float deltaAngle = targetAngle - currentAngle;
-            float fullRotations = Mathf.Floor(deltaAngle / 360f);
-            float finalAngle = targetAngle - fullRotations * 360f;
+            float fullRotations = Mathf.Floor(deltaAngle / _wheelData.RotateAngleLimit);
+            float finalAngle = targetAngle - fullRotations * _wheelData.RotateAngleLimit;
 
             //Rotate Animations
             Sequence spinSequence = DOTween.Sequence();
-            spinSequence.Append(WheelTransform.DOLocalRotate(new Vector3(0f, 0f, currentAngle + fullRotations * 360f), 
-                                                                                                _rotationTime * 0.2f));
+            spinSequence.Append(WheelTransform.DOLocalRotate(new Vector3(0f, 0f, currentAngle + fullRotations * _wheelData.RotateAngleLimit), 
+                                                                                                _wheelData.RotationTime * 0.2f));
             spinSequence.Append(WheelTransform.DOLocalRotate(new Vector3(0f, 0f, targetAngle - sliceAngle),
-                                    _rotationTime * 0.3f, RotateMode.FastBeyond360)).SetEase(Ease.OutQuint);
+                                    _wheelData.RotationTime * 0.3f, RotateMode.FastBeyond360)).SetEase(Ease.OutQuint);
             
             IsSpinning = false;
 
@@ -79,8 +79,10 @@ namespace CardGame.Spins
                 spinbutton.raycastTarget = true;
                 UIManager.OnRewardPanel?.Invoke();
                 RewardCard.Instance.SetCardContent(_spinScript.ContentHolesList[randomAngleIndex].GetComponent<ContentHole>().Reward.sprite,
-                       _spinScript.ContentHolesList[randomAngleIndex].GetComponent<ContentHole>().Amount.text.Substring(1));
-                PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+                       _spinScript.ContentHolesList[randomAngleIndex].GetComponent<ContentHole>().Amount);
+
+                PlayerPrefsManager.Instance.CurrentLevel++;
+
                 _spinScript.GetSpinDatasLevel();
                 _spinScript.PanelBackgroundChange(0);
                 _counterScript.UpdateCounter();
@@ -90,7 +92,8 @@ namespace CardGame.Spins
 
             spinSequence.Play();
         }
-        void SlicesTransformsGetListing()
+     
+        private void SlicesTransformsGetListing()
         {
             float AngleIncrease = 0;
             foreach (GameObject item in _spinScript.ContentHolesList)
@@ -101,7 +104,7 @@ namespace CardGame.Spins
             for (int i = 0; i < _spinScript.ContentHolesList.Count; i++)
             {
                 StopAngles.Add(0 - AngleIncrease);
-                AngleIncrease-=45;
+                AngleIncrease-=_wheelData.AngleIncreaseAmount;
             }
         }
 

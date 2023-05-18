@@ -19,34 +19,48 @@ namespace CardGame.Cards
         [SerializeField] TextMeshProUGUI _rewardName;
         [SerializeField] RewardInfo _rewardInfo;
         [SerializeField] RewardManager _rewardManager;
+        [SerializeField] RewardCardDatas _data;
 
-        public void SetCardContent(Sprite rewardImage, string amount)
+
+        [Header("Disabe Card Values")]
+        [SerializeField] int _maxLevel;
+
+        public void SetCardContent(Sprite rewardImage, int amount)
         {
             _rewardImage.sprite = rewardImage;
-            _amount.text = "x"+amount;
+            _amount.text = "x"+ amount;
             _rewardName.text = _rewardManager.GetRewardName(rewardImage.name);
-            _rewardInfo.SetRewards(rewardImage.name, amount);
+            _rewardInfo.SetRewards(_rewardManager.GetRewardName(rewardImage.name), amount);
         }
 
+        public DeathStates DeathState;
+
+        public enum DeathStates
+        {
+            BOMB,
+        }
         private void OnEnable()
         {
             //Card Rotate Animation
-            transform.DOLocalRotate(new Vector3(0, 360, 0), 0.4f, RotateMode.FastBeyond360).OnComplete(() => {
-                if (_rewardImage.sprite.name== "ui_icon_render_cons_grenade_m67")
+            transform.DOLocalRotate(_data.CardRotValues,_data.RotDuration, RotateMode.FastBeyond360).OnComplete(() => {
+
+                if (_rewardName.text == DeathState.ToString())
                 {
                     UIManager.OnDeathPanel?.Invoke();
                 }
                 else
                 {
-                    Invoke("DisableCard", 0.4f);
+                     StartCoroutine(Extensions.DelayedAction(this, _data.CardDisableDuration, () => {
+                         DisableCard();
+                    }));
                 }
                
             });
         }
 
-        void DisableCard()
+        private void DisableCard()
         {
-            if (PlayerPrefs.GetInt("Level") == 90)
+            if (PlayerPrefsManager.Instance.CurrentLevel == _maxLevel)
             {
                 UIManager.OnGameReset?.Invoke();
             }

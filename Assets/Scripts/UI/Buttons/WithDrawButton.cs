@@ -8,8 +8,7 @@ namespace CardGame.UI
     {
         public void OnPointerDown(PointerEventData eventData)
         {
-            RewardInfo.OnSaveRewards?.Invoke();
-            PlayerPrefs.DeleteKey("Level");
+            PlayerPrefsManager.Instance.WithDrawKeys();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

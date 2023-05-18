@@ -314,14 +314,12 @@ MonoBehaviour:
   WheelTransform: {fileID: 246273469}
   Pointer: {fileID: 1953194621}
   SliceTransforms: []
-  _rotationTime: 5
-  _minSpinCount: 3
-  _maxSpinCount: 6
   StopAngles: []
   IsSpinning: 0
   IsBomb: 0
   _spinScript: {fileID: 836848129}
   _counterScript: {fileID: 1026359106}
+  _wheelData: {fileID: 11400000, guid: a04b8245ad83b93409bbe14f879671ba, type: 2}
 --- !u!1 &23856906
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,9 +566,9 @@ RectTransform:
   m_Father: {fileID: 1964892287}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -429.214}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64236596
@@ -780,9 +778,9 @@ RectTransform:
   m_Father: {fileID: 1964892287}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -169.21399}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109881700
@@ -1221,9 +1219,9 @@ RectTransform:
   m_Father: {fileID: 1964892287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 262.9075, y: -44.607}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 525.815, y: 89.214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433416311
@@ -1843,9 +1841,9 @@ RectTransform:
   m_Father: {fileID: 1964892287}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -689.214}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568031381
@@ -2557,7 +2555,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpinUIData: {fileID: 11400000, guid: 791e57f1e54101c48899a31e68f16ee2, type: 2}
-  SpinData: {fileID: 11400000, guid: 8a9ffe88e55161a4fb0f82a6860c3eb1, type: 2}
+  SpinDataBronze: {fileID: 11400000, guid: 8a9ffe88e55161a4fb0f82a6860c3eb1, type: 2}
+  SpinDataSilver: {fileID: 11400000, guid: cf73e834fe1b61b4ba7b37df4a772240, type: 2}
+  SpinDataGold: {fileID: 11400000, guid: fd3a3c9723e2f5a4195a4a8a64193443, type: 2}
+  SpinDataCurrent: {fileID: 0}
+  _wheelData: {fileID: 11400000, guid: a04b8245ad83b93409bbe14f879671ba, type: 2}
   _rewardCard: {fileID: 1662487545}
   ContentHolesList: []
   _spinImg: {fileID: 246273470}
@@ -3060,6 +3062,7 @@ MonoBehaviour:
   _counterTextNext: {fileID: 485982885}
   _goldFrame: {fileID: 190972946}
   _sliverFrame: {fileID: 333096262}
+  _wheelData: {fileID: 11400000, guid: a04b8245ad83b93409bbe14f879671ba, type: 2}
 --- !u!1 &1033766580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,6 +3384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _holeContentPrefab: {fileID: 2070531095813238815, guid: 2a282ce7890e1c647b35151eec393664, type: 3}
   _spinController: {fileID: 836848129}
+  _data: {fileID: 11400000, guid: a04b8245ad83b93409bbe14f879671ba, type: 2}
 --- !u!1 &1275797346
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,9 +3554,9 @@ RectTransform:
   m_Father: {fileID: 1964892287}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -299.214}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448342663
@@ -4262,6 +4266,14 @@ MonoBehaviour:
   _rewardName: {fileID: 1563486551}
   _rewardInfo: {fileID: 1964892288}
   _rewardManager: {fileID: 803846457}
+  _data: {fileID: 11400000, guid: 8913908b20874c747bcfd8518647c1b3, type: 2}
+  _cardRotX: 0
+  _cardRotY: 0
+  _cardRotZ: 0
+  _rotDuration: 0.6
+  _cardDisableDuration: 0.4
+  _maxLevel: 90
+  DeathState: 0
 --- !u!1 &1705058843
 GameObject:
   m_ObjectHideFlags: 0
@@ -4883,6 +4895,12 @@ MonoBehaviour:
   _healthShot: {fileID: 2033310825}
   _healthShotAdrenaline: {fileID: 472364532}
   _medkitEaster: {fileID: 1659644916}
+  _rewardTexts:
+  - {fileID: 1033766582}
+  - {fileID: 578654625}
+  - {fileID: 2033310825}
+  - {fileID: 472364532}
+  - {fileID: 1659644916}
 --- !u!114 &1964892289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5154,9 +5172,9 @@ RectTransform:
   m_Father: {fileID: 1964892287}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -559.214}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055330688

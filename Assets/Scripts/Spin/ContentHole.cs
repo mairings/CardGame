@@ -6,7 +6,8 @@ namespace CardGame.Spins
 {
     public class ContentHole : MonoBehaviour
     {
-        public TextMeshProUGUI Amount;
+        public TextMeshProUGUI AmountTxt;
         public Image Reward;
+        public int Amount;
     }
 }

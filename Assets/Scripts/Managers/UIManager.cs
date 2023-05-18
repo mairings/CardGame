@@ -44,7 +44,7 @@ namespace CardGame.Manager
         }
         public void GameReset()
         {
-            PlayerPrefs.DeleteAll();
+            PlayerPrefsManager.Instance.ResetAllKeys();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
