@@ -8,7 +8,6 @@ namespace CardGame.UI
 {
     public class RewardInfo : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI _cash, _goldPile, _healthShot, _healthShotAdrenaline, _medkitEaster;
         [SerializeField] List<TextMeshProUGUI> _rewardTexts;
         private void Start()
         {
